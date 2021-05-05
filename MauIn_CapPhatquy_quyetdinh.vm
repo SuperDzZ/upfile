@@ -1,0 +1,165 @@
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <title>Cấp phát quỹ - Quyết định</title>
+    <style type="text/css">
+        body {
+            font-family: Times New Roman;
+            font-size: 13pt;
+        }
+
+        table {
+            font-family: Times New Roman;
+            font-size: 13pt;
+            width: 100%;
+        }
+
+        table th {
+            font-family: Times New Roman;
+            font-size: 13pt;
+            text-align: center;
+        }
+
+        table th,
+        table td {
+            vertical-align: top;
+            font-size: 13pt;
+        }
+
+        .sectionGuide {
+            padding: 0;
+            width: 100%;
+        }
+
+        .pagebreak {
+            page-break-before: always;
+        }
+
+        .footer {
+            position: fixed;
+            display: block;
+            padding-top: 90em;
+        }
+
+        .sup {
+            position: relative;
+            vertical-align: baseline;
+            top: -0.5em;
+            font-size: 13pt;
+        }
+
+        .indent {
+            text-indent: 50pt;
+            line-height: 1.3;
+        }
+
+        .italic {
+            font-style: italic;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .e-sign {
+            color: white;
+            font-size: 1pt;
+            line-height: 14pt;
+        }
+    </style>
+</head>
+<body>
+    #set($tab = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
+<div class="sectionGuide">
+    <table border="0">
+        <tr>
+            <td style="text-align: center" width="40%">
+                <span style="font-size: 12pt">TẬP ĐOÀN ĐIỆN LỰC VIỆT NAM</span>
+                <br/>
+                <b>TỔNG CÔNG TY</b>
+                <br/>
+                <b>ĐIỆN LỰC MIỀN BẮC</b>
+                <div>
+                    <hr style="width: 30%;"/>
+                </div>
+            </td>
+            <td style="text-align: center" width="60%">
+                <span style="font-size: 12pt"><b>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</b></span>
+                <br/>
+                <b>Độc lập - Tự do - Hạnh phúc</b>
+                <div>
+                    <hr style="width: 50%;"/>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center">
+                Số: ${SoQuyetDinh}/${MaQuyetDinh}
+            </td>
+            <td style="text-align: right" class="italic">
+                #set($Ngay = ${NgayQuyetDinh.split("/")})
+                Hà Nội, ngày ${Ngay[0].trim()} tháng ${Ngay[1].trim()} năm ${Ngay[2].trim()}
+            </td>
+        </tr>
+    </table>
+    <div style="text-align: center; font-size:14pt;" class="bold">
+        <br/>
+        <div>QUYẾT ĐỊNH</div>
+        <div>Về việc $VeViec</div>
+        <div>
+            <hr style="width: 2.77in;"/>
+        </div>
+        <div style="margin-top: 18pt">
+            TỔNG GIÁM ĐỐC
+        </div>
+        <div style="margin-bottom: 12pt">
+            TỔNG CÔNG TY ĐIỆN LỰC MIỀN BẮC
+        </div>
+    </div>
+    <div style="font-size: 13.5pt;margin-top: 2pt">
+        <div class="italic" style="text-align: justify">
+            <p>${tab}${CanCu.replaceAll("\n","<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}
+            </p>
+        </div>
+        <div style="text-align: center; font-size: 14pt; margin: 6pt 0;" class="bold">
+            QUYẾT ĐỊNH:
+        </div>
+        <div style="text-align: justify">
+            <span>
+                ${tab}<b>Điều 1. </b>${QuyetDinh} <b>${SoTien}</b><i> (${BangChu}) </i>
+            </span>
+            #foreach($data in ${TableNoiDung})
+                #if(${data.get("Dieu")} == "1")
+                    ${data.get("NoiDung")}
+                #else
+                    <br/>
+                    ${tab}<b>Điều ${data.get("Dieu")}. </b>${data.get("NoiDung")}
+                #end
+            #end
+        </div>
+    </div>
+    <table border="0" style="margin-top: 3pt">
+        <tr>
+            <td style="width: 50%;">
+                <br/>
+                <div style="font-size: 11pt">
+                    <span class="italic bold" style="font-size: 12pt;">
+                    Nơi nhận:
+                    </span><br/>
+                    ${NoiNhan.replaceAll("\n","<br/>")}
+                </div>
+            </td>
+            <th style="width: 50%;" class="bold">
+                TỔNG GIÁM ĐỐC
+                <br/><br/><br/>
+                <p class="e-sign">eSign_GD</p>
+                <br/><br/>
+                ${GiamDoc}
+            </th>
+        </tr>
+    </table>
+</div>
+<div class="e-sign" style="position: absolute; top: 26.5cm; width: 5cm">
+    <div style="float: left">eSign_PhoBanB3</div>
+    <div style="float: right">eSign_TruongBanB3</div>
+</div>
+</body>
